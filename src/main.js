@@ -9,6 +9,12 @@ import CartPreview from '@/components/cart/CartPreview'
 import Axios from 'axios'
 import 'vuetify/dist/vuetify.min.css'
 import '@mdi/font/css/materialdesignicons.css'
+import vSelect from 'vue-select'
+import Vuelidate from 'vuelidate'
+import VeeValidate from 'vee-validate'
+const VueInputMask = require('vue-inputmask').default
+
+
 
 
 //Vue.use(VueLocalStorage)
@@ -24,6 +30,8 @@ if (token) {
 }
 
 Vue.component('app-cart-preview', CartPreview)
+Vue.component('v-select', vSelect)
+
 
 // import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import './css/swiper.css'
@@ -31,6 +39,9 @@ Vue.component('app-cart-preview', CartPreview)
 // Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
 Vue.use(Vuetify)
+Vue.use(VueInputMask)
+Vue.use(Vuelidate)
+Vue.use(VeeValidate)
 
 //Vue.config.productionTip = false
 

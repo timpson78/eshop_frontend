@@ -88,7 +88,7 @@
                 v-for="link in login_links"
                 :key="link.title"
                 :to="link.url"
-                @click="logout"
+                @click="link.click"
               >
                 <v-icon class="mr-2">{{link.icon}}</v-icon>
                 {{link.title}}
@@ -116,7 +116,7 @@
       <v-snackbar
         :bottom="true"
         :multi-line="true"
-        :timeout="10000"
+        :timeout="5000"
         color="error"
         @imput="closeError"
         :value="true"
@@ -126,6 +126,26 @@
           flat
           dark
           @click.native="closeError"
+        >
+          Close
+        </v-btn>
+      </v-snackbar>
+    </template>
+
+    <template v-if="info">
+      <v-snackbar
+        :bottom="true"
+        :multi-line="true"
+        :timeout="5000"
+        color="green"
+        @imput="closeInfo"
+        :value="true"
+      >
+        {{info}}
+        <v-btn
+          flat
+          dark
+          @click.native="closeInfo"
         >
           Close
         </v-btn>
@@ -156,6 +176,9 @@ export default {
     error () {
       return this.$store.getters.getError
     },
+    info () {
+      return this.$store.getters.getInfo
+    },
     carts () {
       return this.$store.getters.getCarts
     },
@@ -171,13 +194,13 @@ export default {
     login_links () {
       if (this.isUserLoggedIn) {
         return [
-          {title: 'личный кабинет', icon: 'settings', url: '/cabinet'},
-          {title: 'Выход', icon: 'exit_to_app', url: '', click: 'logout'}
+          {title: 'личный кабинет', icon: 'perm_identity', url: '/cabinet', click: this.donothing},
+          {title: 'Выход', icon: 'exit_to_app', url: '', click: this.logout}
         ]
       } else {
         return [
-          {title: 'Вход', icon: 'perm_identity', url: '/login'},
-          {title: 'Регистрация', icon: '', url: '/registration'}
+          {title: 'Вход', icon: 'perm_identity', url: '/login', click: this.donothing},
+          {title: 'Регистрация', icon: '', url: '/registration', click: this.donothing}
         ]
       }
     }
@@ -187,13 +210,18 @@ export default {
     closeError () {
       this.$store.dispatch('clearError')
     },
+    closeInfo () {
+      this.$store.dispatch('clearInfo')
+    },
     toCart () {
       this.$router.push('/cart')
     },
     logout () {
-       this.$store.commit('set_user', null)
-
-    }
+      this.$store.commit('set_user', null)
+      localStorage.removeItem('user')
+      this.$router.push('/')
+    },
+    donothing () {}
   }
 }
 </script>

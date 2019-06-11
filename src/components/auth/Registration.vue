@@ -79,7 +79,6 @@
               @click=""
               :loading="loading"
             >
-
               <span class="span_button"> Зарегистрироваться </span></v-btn>
           </v-card-actions>
         </v-card>

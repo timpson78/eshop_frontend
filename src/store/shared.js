@@ -1,7 +1,8 @@
 export default {
   state: {
     loading: false,
-    error: null
+    error: null,
+    info: null
   },
   mutations: {
     setLoading (state, payload) {
@@ -12,18 +13,30 @@ export default {
     },
     clearError (state) {
       state.error = null
+    },
+    setInfo (state, payload) {
+      state.info = payload
+    },
+    clearInfo (state) {
+      state.info = null
     }
   },
   actions: {
     setLoading ({commit}, payload) {
-      commit ('setLoading', payload)
+      commit('setLoading', payload)
     },
 
     setError ({commit}, payload) {
-      commit ('setError', payload)
+      commit('setError', payload)
+    },
+    setInfo ({commit}, payload) {
+      commit('setInfo', payload)
     },
     clearError ({commit}) {
       commit('clearError')
+    },
+    clearInfo ({commit}) {
+      commit('clearInfo')
     }
 
   },
@@ -33,6 +46,9 @@ export default {
     },
     getError (state) {
       return state.error
+    },
+    getInfo (state) {
+      return state.info
     }
   }
 }

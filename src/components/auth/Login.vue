@@ -37,7 +37,6 @@
               :loading="loading"
               :disabled="!valid || loading"
             >
-
               <span class="span_button"> Войти </span></v-btn>
           </v-card-actions>
         </v-card>
@@ -60,7 +59,7 @@
         ],
         passwordRules: [
           v => !!v || 'пароль - обязательное поле',
-          v => v.length >= 6 || 'пароль должен быть больше 6-ти символов'
+          v => v.length >= 3 || 'пароль должен быть больше 6-ти символов'
         ]
       }
     },
@@ -73,7 +72,7 @@
       login: function () {
         let email = this.email
         let password = this.password
-        this.$store.dispatch('login', { email, password })
+        this.$store.dispatch('login', {email, password})
             .then(() => this.$router.push('/'))
             .catch()
       }
