@@ -9,6 +9,7 @@ import CartPreview from '@/components/cart/CartPreview'
 import Axios from 'axios'
 import 'vuetify/dist/vuetify.min.css'
 import '@mdi/font/css/materialdesignicons.css'
+import '@fortawesome/fontawesome-free/css/all.css'
 import vSelect from 'vue-select'
 import Vuelidate from 'vuelidate'
 import VeeValidate from 'vee-validate'
@@ -51,5 +52,8 @@ new Vue({
   router,
   store: store,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  icons: {
+    iconfont: 'mdi' ||  'md' || 'fa' || 'fa4'
+  }
 })

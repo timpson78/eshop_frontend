@@ -13,6 +13,7 @@
                 label="Имя"
                 type="text"
                 v-model="name"
+                :rules="nameRules"
               ></v-text-field>
               <v-text-field
                 color="green"
@@ -21,6 +22,7 @@
                 label="Фамилия"
                 type="text"
                 v-model="lastname"
+                :rules="lastnameRules"
               ></v-text-field>
               <v-text-field
                 color="green"
@@ -31,6 +33,7 @@
                 mask="+7(###)###-##-##"
                 type="text"
                 v-model="phone"
+                :rules="phoneRules"
               ></v-text-field>
               <v-text-field
                 color="green"
@@ -76,8 +79,9 @@
             <v-btn
               class="form_submit"
               flat
-              @click=""
+              @click="signup"
               :loading="loading"
+              :disabled="!valid || loading"
             >
               <span class="span_button"> Зарегистрироваться </span></v-btn>
           </v-card-actions>
@@ -88,29 +92,74 @@
 </template>
 
 <script>
-    export default {
-       data () {
-         return {
-           checkPersonalData: true,
-           loading: false,
-           name: '',
-           lastname: '',
-           phone: '',
-           password: '',
-           confirm_password: '',
-           email: '',
-           valid: false,
-           emailRules: [
-             v => !!v || 'почта - обязательное поле',
-             v => /.+@.+/.test(v) || 'Нужен потчовый адрес'
-           ],
-           passwordRules: [
-             v => !!v || 'пароль - обязательное поле',
-             v => v.length >= 6 || 'пароль должен быть больше 6-ти символов'
-           ]
-         }
-       }
-    }
+  import VueRecaptcha from 'vue-recaptcha'
+  import config from '@/config/config.js'
+  import Vue from 'vue'
+
+  export default {
+    data () {
+      return {
+        checkPersonalData: true,
+        loading: false,
+        name: '',
+        lastname: '',
+        phone: '',
+        password: '',
+        confirm_password: '',
+        email: '',
+        valid: false,
+        emailRules: [
+          v => !!v || 'почта - обязательное поле',
+          v => /.+@.+/.test(v) || 'Нужен потчовый адрес'
+        ],
+        passwordRules: [
+          v => !!v || 'пароль - обязательное поле',
+          v => v.length >= 6 || 'пароль должен быть больше 6-ти символов'
+        ],
+        nameRules: [
+          v => !!v || 'Имя - обязательное поле'
+        ],
+        lastnameRules: [
+          v => !!v || 'Фамилия - обязательное поле'
+        ],
+        phoneRules: [
+          v => !!v || 'Тенлефон - обязательное поле'
+        ]
+      }
+    },
+    methods: {
+      signup () {
+        return new Promise((resolve, reject) => {
+          this.$store.commit('clearError')
+          this.$store.commit('clearInfo')
+          this.$store.commit('setLoading', true)
+          let fullName = this.name + ' ' + this.lastname
+          let signupData = {name: fullName, email: this.email, password: this.password, phone: this.phone}
+          console.log(signupData)
+          Vue.prototype.$http({url: config.API_URL + '/auth/signup',
+            data: signupData,
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'}})
+              .then(resp => {
+                this.$store.commit('setLoading', false)
+                this.$store.commit('setInfo', resp.data.message)
+                resolve(resp)
+              })
+              .catch(err => {
+                this.$store.commit('setLoading', false)
+                this.$store.commit('setError', err.response.data.message)
+                reject(err)
+              })
+        })
+      }
+    },
+    computed: {
+      loading () {
+        return this.$store.getters.getLoading
+        }
+      },
+    components: {VueRecaptcha}
+  }
 </script>
 
 <style scoped>

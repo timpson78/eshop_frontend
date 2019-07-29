@@ -256,42 +256,57 @@ export default {
 </style>
 
 <style scoped>
-  .pointer {
-    cursor: pointer;
-  }
-  .pointer:hover {
-    color: #999999;
+  .demo-tree {
+    width: 50%;
   }
 
-  .cart_icon {
-    color: #7ac143;
-  }
-  .cart_icon:hover {
-    color: #008b44;
-  }
-  .centerallproject {
-    width: 80%;
-    margin: auto;
-    position: static;
+  .filter-field {
+    display: block;
+    width: 100%;
+    padding: 3px;
   }
 
-  .menu_font {
-    font-size: 15px;
-    font-family: Rotonda,sans-serif;
-    text-transform: none;
+  .events-table {
+    width: 100%;
+    margin-top: 15px;
   }
-  .up_menu_font {
-    font-size: 13px;
-    font-family: Rotonda,sans-serif;
-    text-transform: lowercase;
+
+  .events-table-header {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    background-color: #fff;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+
   }
-  .tel_ahref {
-    font-size: 13px;
-    font-family: Rotonda,sans-serif;
-    text-transform: lowercase;
-    color: #000;
+
+  .events-table .event:nth-of-type(odd) {
+    background-color: #f9f9f9;
   }
-  .toolbar_height {
-    height: 30px;
+
+  .events-table .event {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+    display: flex;
+  }
+
+  .events-table .event > span,
+  .events-table-header > span {
+    flex-basis: 25%;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .8s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+
+  .node-controls a {
+    color: #ff14ce
   }
 </style>

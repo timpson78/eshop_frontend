@@ -198,7 +198,6 @@
               data: updatedData,
               headers: {'Content-Type': 'application/json'}})
             .then(resp => {
-              console.log(resp)
               this.$store.commit('setInfo', resp.data)
             })
             .catch(err => {
@@ -234,7 +233,6 @@
       checkDate () {
         let arrD = this.birthDay().split('-')
         let d = new Date(arrD[0], arrD[1], arrD[2])
-        console.log(d.getFullYear() + ' ' + this.intToMyString(d.getMonth(), 2) + ' ' + this.intToMyString(d.getDate(), 2))
         if ((d.getFullYear() == arrD[0]) && (this.intToMyString(d.getMonth(), 2) == arrD[1]) && (this.intToMyString(d.getDate(), 2) == arrD[2])) {
           return true
         } else { return false }
@@ -275,12 +273,12 @@
             this.pickedDate = this.formatDate(resp.data.birthday)
           }
           // setTimeout(this.$store.commit('setLoading', false), 1000);
+          this.$store.commit('setLoading', false)
         })
         .catch(err => {
           this.$store.commit('setError', err)
         })
 
-      this.$store.commit('setLoading', false)
     }
   }
 </script>

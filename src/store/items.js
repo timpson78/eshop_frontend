@@ -110,7 +110,7 @@ export default {
   },
   actions: {},
   getters: {
-    getItemById (state) {
+      getItemById (state) {
       return id => {
         return state.items.find(item => item.id === id)
       }
