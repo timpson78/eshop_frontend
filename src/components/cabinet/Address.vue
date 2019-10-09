@@ -49,13 +49,13 @@
                   </div>
                   <div class="xf-lk-contact-detail__group_select">
                       <div id="birthday_div" class="width20">
-                        <v-select class="select_b" @input='checkDateOnSelect' :options="day" v-model="pickedDate.day"></v-select>
+                        <vue-select class="select_b" @input='checkDateOnSelect' :options="day" v-model="pickedDate.day"></vue-select>
                       </div>
                       <div id="birthmonth_div" class="width50">
-                        <v-select class="select_b" @input='checkDateOnSelect' :options="month" v-model="pickedDate.month"></v-select>
+                        <vue-select class="select_b" @input='checkDateOnSelect' :options="month" v-model="pickedDate.month"></vue-select>
                       </div>
                       <div id="birthyear_div" class="width30">
-                        <v-select class="select_b" @input='checkDateOnSelect' :options="year" v-model="pickedDate.year"></v-select>
+                        <vue-select class="select_b" @input='checkDateOnSelect' :options="year" v-model="pickedDate.year"></vue-select>
                       </div>
                     <div class="myerror text_error"
                          v-if="dateError"> Неправильный формат даты
@@ -172,7 +172,7 @@
         this.$v.phone.$touch()
         this.dateError = !this.checkDate()
         if (!this.checkDate() || this.$v.firstName.$error ||
-      this.$v.lastName.$error || this.$v.email.$error || this.$v.phone.$error) {
+        this.$v.lastName.$error || this.$v.email.$error || this.$v.phone.$error) {
           this.showError = true
           this.errorMessage = 'Заполните правильно поля формы'
         } else {

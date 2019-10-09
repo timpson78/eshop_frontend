@@ -10,10 +10,13 @@ import Axios from 'axios'
 import 'vuetify/dist/vuetify.min.css'
 import '@mdi/font/css/materialdesignicons.css'
 import '@fortawesome/fontawesome-free/css/all.css'
-import vSelect from 'vue-select'
+import vueSelect from 'vue-select'
 import Vuelidate from 'vuelidate'
 import VeeValidate from 'vee-validate'
+import VModal from 'vue-js-modal'
 const VueInputMask = require('vue-inputmask').default
+import VueLazyload from 'vue-lazyload'
+
 
 
 
@@ -31,7 +34,7 @@ if (token) {
 }
 
 Vue.component('app-cart-preview', CartPreview)
-Vue.component('v-select', vSelect)
+Vue.component('vue-select', vueSelect)
 
 
 // import VueAwesomeSwiper from 'vue-awesome-swiper'
@@ -43,7 +46,8 @@ Vue.use(Vuetify)
 Vue.use(VueInputMask)
 Vue.use(Vuelidate)
 Vue.use(VeeValidate)
-
+Vue.use(VModal, { dynamic: true, injectModalsContainer: true })
+Vue.use(VueLazyload)
 //Vue.config.productionTip = false
 
 /* eslint-disable no-new */

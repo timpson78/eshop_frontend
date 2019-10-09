@@ -1,8 +1,8 @@
 <template>
-  <v-container row>
-    <v-layout row>
+  <v-container row class="pa-1 ma-1">
+    <v-layout >
       <v-flex xs12>
-        <v-breadcrumbs class="mt-2 mb-2 pa-0">
+        <v-breadcrumbs class="mt-2 mb-2 ">
           <v-icon slot="divider">chevron_right</v-icon>
           <v-breadcrumbs-item
             v-for="bc in breadCrumbs"

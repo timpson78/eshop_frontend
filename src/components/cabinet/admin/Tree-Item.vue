@@ -129,6 +129,9 @@
         return this.node.parentId == null
       }
 
+    },
+    created () {
+      this.node.isOpen = true
     }
   }
 </script>

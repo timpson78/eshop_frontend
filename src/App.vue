@@ -101,8 +101,8 @@
         </v-toolbar>
     <v-divider></v-divider>
         <v-content class="white">
-
             <router-view></router-view>
+
         </v-content>
 
         <v-footer
@@ -157,9 +157,9 @@
 </template>
 
 <script>
-
 export default {
-
+  components: {
+  },
   data () {
     return {
       drawer: false,
@@ -256,6 +256,11 @@ export default {
 </style>
 
 <style scoped>
+  .centerallproject {
+    width: 90%;
+    margin: auto;
+  }
+
   .demo-tree {
     width: 50%;
   }

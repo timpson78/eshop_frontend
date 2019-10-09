@@ -145,7 +145,7 @@
       </v-navigation-drawer>
     </div>
   </v-flex>
-  <v-flex xs9>
+  <v-flex xs8>
 
     <div v-if="adminactivetab==='ListItems'">
       <list-items></list-items>
@@ -159,6 +159,10 @@
     <!--</div>-->
 
   </v-flex>
+    <v-flex xs2>
+
+    </v-flex>
+
   </v-layout>
 </div>
 </template>
