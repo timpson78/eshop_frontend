@@ -105,6 +105,7 @@
               </v-flex>
               <v-flex xs3 class="pl-2">
                 <v-select
+                  color="green"
                   item-text="name"
                   item-value="id"
                   :items="mesures"
@@ -168,7 +169,7 @@
               <v-layout wrap justify-space-around>
                 <v-switch v-model="activity" class="ma-2" label="Активность" color="green"></v-switch>
                 <v-switch v-model="saleshit" class="ma-2" label="Хит продаж" color="green"></v-switch>
-                <v-switch v-model="newitem" class="ma-2" label="Новинка" color="green"></v-switch>
+                <v-switch v-model="newItem" class="ma-2" label="Новинка" color="green"></v-switch>
                 <v-switch v-model="promotion" class="ma-2" label="Продвижение" color="green"></v-switch>
               </v-layout>
             </v-layout>
@@ -321,7 +322,7 @@
         discount: null,
         activity: false,
         saleshit: false,
-        newitem: false,
+        newItem: false,
         promotion: false,
         seoUrl: '',
         seoKeywords: '',

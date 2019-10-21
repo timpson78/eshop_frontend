@@ -16,8 +16,8 @@ import VeeValidate from 'vee-validate'
 import VModal from 'vue-js-modal'
 const VueInputMask = require('vue-inputmask').default
 import VueLazyload from 'vue-lazyload'
-
-
+import VueNumericInput from 'vue-numeric-input';
+import VueNumeric from 'vue-numeric'
 
 
 
@@ -35,7 +35,8 @@ if (token) {
 
 Vue.component('app-cart-preview', CartPreview)
 Vue.component('vue-select', vueSelect)
-
+Vue.use(VueNumericInput)
+Vue.use(VueNumeric)
 
 // import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import './css/swiper.css'

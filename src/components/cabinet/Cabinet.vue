@@ -25,9 +25,7 @@
     <div v-else-if="userRole==='ROLE_ADMIN'">
       <left-admin-menu></left-admin-menu>
     </div>
-
-
-
+    
   </v-container>
 </template>
 

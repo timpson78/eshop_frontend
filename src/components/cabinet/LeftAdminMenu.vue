@@ -145,7 +145,7 @@
       </v-navigation-drawer>
     </div>
   </v-flex>
-  <v-flex xs8>
+  <v-flex xs9>
 
     <div v-if="adminactivetab==='ListItems'">
       <list-items></list-items>
@@ -154,14 +154,7 @@
       <Categories></Categories>
     </div>
 
-    <!--<div v-else-if="activeTab==='ChangePassword'">-->
-      <!--<change-password-tab></change-password-tab>-->
-    <!--</div>-->
-
   </v-flex>
-    <v-flex xs2>
-
-    </v-flex>
 
   </v-layout>
 </div>
