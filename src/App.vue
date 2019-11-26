@@ -102,7 +102,6 @@
     <v-divider></v-divider>
         <v-content class="white">
             <router-view></router-view>
-
         </v-content>
 
         <v-footer
@@ -313,5 +312,8 @@ export default {
 
   .node-controls a {
     color: #ff14ce
+  }
+  .width100 {
+    width: 100%;
   }
 </style>

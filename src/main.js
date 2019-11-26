@@ -14,12 +14,11 @@ import vueSelect from 'vue-select'
 import Vuelidate from 'vuelidate'
 import VeeValidate from 'vee-validate'
 import VModal from 'vue-js-modal'
-const VueInputMask = require('vue-inputmask').default
+const  VueInputMask = require('vue-inputmask').default
 import VueLazyload from 'vue-lazyload'
-import VueNumericInput from 'vue-numeric-input';
+import VueNumericInput from 'vue-numeric-input'
 import VueNumeric from 'vue-numeric'
-
-
+import UUID from 'vue-uuid'
 
 //Vue.use(VueLocalStorage)
 
@@ -49,6 +48,7 @@ Vue.use(Vuelidate)
 Vue.use(VeeValidate)
 Vue.use(VModal, { dynamic: true, injectModalsContainer: true })
 Vue.use(VueLazyload)
+Vue.use(UUID)
 //Vue.config.productionTip = false
 
 /* eslint-disable no-new */

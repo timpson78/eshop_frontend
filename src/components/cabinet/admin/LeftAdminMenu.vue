@@ -2,7 +2,7 @@
 <div>
   <v-layout row>
   <v-flex xs3>
-    <div class="my_div_nav_menu">
+    <div>
       <v-navigation-drawer
         stateless
         value="true"
@@ -145,13 +145,16 @@
       </v-navigation-drawer>
     </div>
   </v-flex>
-  <v-flex xs9>
+  <v-flex xs9 class="v-height">
 
     <div v-if="adminactivetab==='ListItems'">
       <list-items></list-items>
     </div>
     <div v-if="adminactivetab==='Categories'">
       <Categories></Categories>
+    </div>
+    <div v-if="adminactivetab==='Properties'">
+        <common-properties></common-properties>
     </div>
 
   </v-flex>
@@ -161,17 +164,19 @@
 </template>
 
 <script>
-  import ListItems from './admin/ListItems'
-  import Categories from "./admin/Categories";
+  import ListItems from './ListItems'
+  import Categories from "./Categories";
+  import CommonProperties from "./CommonProperties"
 
   export default {
-    data () {
+    components: {CommonProperties, Categories, ListItems},
+    data() {
       return {
         adminactivetab: '',
 
         items: [{name: 'Товары', action: 'ListItems', icon: ''},
-                {name: 'Категории', action: 'Categories', icon: ''},
-                {name: 'Свойства', action: this.test, icon: ''}],
+          {name: 'Категории', action: 'Categories', icon: ''},
+          {name: 'Характеристики', action: 'Properties', icon: ''}],
 
         orders: [{name: 'Список заказов', action: this.test, icon: ''}],
 
@@ -180,18 +185,17 @@
         cashincome: [{name: 'Поступление денег', action: this.test, icon: ''}],
 
         importexport: [{name: 'Экспорт', action: this.test, icon: ''},
-                       {name: 'Импорт', action: this.test, icon: ''}]
+          {name: 'Импорт', action: this.test, icon: ''}]
       }
     },
     methods: {
-      test () {
+      test() {
         console.log('test')
       },
-      changetab (tab) {
+      changetab(tab) {
         this.adminactivetab = tab
       }
-    },
-    components: {Categories, ListItems}
+    }
   }
 </script>
 
@@ -202,6 +206,5 @@
   nav_drawer {
 
   }
-
 
 </style>

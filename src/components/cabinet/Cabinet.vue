@@ -1,6 +1,6 @@
 <template>
-  <v-container row class="pa-1 ma-1">
-    <v-layout >
+  <v-container row class="pa-0 ma-0 width100 ">
+    <v-layout>
       <v-flex xs12>
         <v-breadcrumbs class="mt-2 mb-2 ">
           <v-icon slot="divider">chevron_right</v-icon>
@@ -18,19 +18,17 @@
     <v-layout row mb-3 >
       <h1 class="h1_font">{{ this.title() }}</h1>
     </v-layout>
-
-    <div v-if="userRole==='ROLE_USER'">
-      <left-user-menu></left-user-menu>
-    </div>
-    <div v-else-if="userRole==='ROLE_ADMIN'">
-      <left-admin-menu></left-admin-menu>
-    </div>
-    
+        <div v-if="userRole==='ROLE_USER'">
+          <left-user-menu></left-user-menu>
+        </div>
+        <div v-else-if="userRole==='ROLE_ADMIN'">
+          <left-admin-menu></left-admin-menu>
+        </div>
   </v-container>
 </template>
 
 <script>
-  import LeftAdminMenu from './LeftAdminMenu'
+  import LeftAdminMenu from './admin/LeftAdminMenu'
   import LeftUserMenu from './LeftUserMenu'
 
   export default {
@@ -119,6 +117,10 @@
     text-decoration: none;
     font-family: Gothic,sans-serif;
 
+  }
+  .width100 {
+    max-width: none;
+    width: 100%;
   }
 
 </style>

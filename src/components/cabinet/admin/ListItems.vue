@@ -106,7 +106,7 @@
           loading-text="Данные загружаются подождите...."
           class="ml-4 mr-0 pr-0"
         >
-          <template v-slot:items="props"       class="">
+          <template v-slot:items="props"   class="">
               <tr v-if="props.item.isNew">
                 <td><input    class="inputstyle"
                       :class="{'border_error': $v.newItem.partnumber.$error, 'border_normal':!$v.newItem.partnumber.$error}"
