@@ -438,12 +438,12 @@
         }
 
       },
-      loadPropertyGropupsRest () {
+     async loadPropertyGropupsRest () {
         this.$store.commit('clearError')
         this.$store.commit('setLoading', true)
         this.$store.commit('clearInfo')
         this.isNew = false
-        Vue.prototype.$http({
+      return await  Vue.prototype.$http({
           url: config.API_URL + '/rest/itemcommonproperties/propertygroup/all',
           method: 'GET',
           headers: {'Content-Type': 'application/json'}
@@ -684,8 +684,14 @@
 
   },
     created () {
-      this.loadPropertyGropupsRest()
+      this.loadPropertyGropupsRest().then(() => {
+        if (this.activePropertyGroupId == 0) {
+          this.activePropertyGroupId = this.propertyGroups[0].id
+        }
+        this.getCommonPropertiesByGroupIdRest(this.activePropertyGroupId)
+      })
     }
+
 
   }
 </script>
